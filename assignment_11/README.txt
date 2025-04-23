@@ -11,19 +11,33 @@ Data Observations
 5. Price distribution count plot has a very large skew towards the left and large spread and needs further exploration
 
 Numerical Data Inference
-1. Year feature shows a positive correlation with Price of the vehicle
-2. Odometer feature shows a negative correalation with the Price of the vehicle
+1. Year feature shows a positive correlation with Price of the vehicle. i.e. New year vehicles are more expensive
+2. Odometer feature shows a negative correalation with the Price of the vehicle i.e. Lesser driven vehicles are more expensive
 
 Categorical Data Inferences
-1. From the Visual plots we can infer the following
+1. From the Visual Histogram plots we can infer the following
     a. Gas vehicles are the most popular
     b. Ford, Chevy, Toyota, Honda, Nissan are the top 5 manufacturers for vehicles sold
     c. Clean title is the most preferred in a vehicles sale
     d. SUV and Sedan are the 2 most popular type of vehicles sold
     e. White, Black, Silver, Grey , Blue are the top 5 color of the vehicles sold 
-2. We donot observe a clear correlation between the Categorical features and the price of the vehicles, we will have to use OHE to figure out if any of these columns are interesting
+2. VIN column was great to find unqiue cars, but was not useful for any inference or modeling
+3. Similarly model, id, region and state columns were not useful for modeling
 
+categorical_columns_all = ['manufacturer', 'model', 'condition', 'cylinders', 'fuel', 'title_status', 'transmission', 'drive', 'VIN', 'type', 'paint_color', 'state']
 
+Modelling 
+We ran Linear Regression, Ridge and Lasso models, with Lasso Model with the following features
+
+Non Numeric (Categorical) columns = ['manufacturer', 'condition', 'cylinders', 'fuel', 'title_status', 'transmission', 'type', 'paint_color']
+Numerical columns = ['year', 'odometer']
+
+Following were the Mean Squared Errors of the 3 models
+Linear Regression - 211351517.91
+Ridge Regression - 211351517.91
+Lasso Regression - 109791336.85
+
+We observed that the Lasso model performed the best among the three with a MSE of 109791336.85
 
 Link to Jupyter notebook 
-https://github.com/kiks2580/AI_ML_Coursework/blob/main/assignment5_1_starter/prompt.ipynb
+https://github.com/kiks2580/AI_ML_Coursework/blob/main/assignment_11/car_price_prediction.ipynb
